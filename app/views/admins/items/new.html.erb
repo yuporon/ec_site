@@ -1,0 +1,8 @@
+...編集
+<%= render 'form', item: @item %>
+↓
+<%= render 'form', item: @item, url: users_items_path %>
+
+<%= link_to 'Back', items_path %>
+↓
+<%= link_to 'Back', users_items_path %>

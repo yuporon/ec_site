@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :publics
+  devise_for :admins
+  namespace :admins do
+    resources :items
+  end
 end
