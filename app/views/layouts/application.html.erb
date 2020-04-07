@@ -4,12 +4,38 @@
     <title>EcSite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav>
+        <ul>
+          <% if admin_signed_in? %>
+            <h1>管理者</h1>
+            <li><%= link_to "受注一覧" %></li>
+            <li><%= link_to "商品登録" %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <% elsif end_user_signed_in? %>
+            <h1>ユーザー</h1>
+            <li><%= link_to "マイページ" %></li>
+            <li><%= link_to "カート一覧" %></li>
+            <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+          
+          <% else %>
+            <h1>ゲストユーザー</h1>
+            <li><%= link_to "新規登録", new_end_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_end_user_session_path %></li>
+            <li><%= link_to "管理者ログイン", new_admin_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
