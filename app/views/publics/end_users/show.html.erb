@@ -1,1 +1,7 @@
 <h1>show</h1>
+    <div>名:<%= current_end_user.first_name%></div>
+    <div>姓:<%= current_end_user.last_name%></div>
+    <div>メールアドレス:<%= current_end_user.email %></div>
+    <div><%= link_to "編集", edit_publics_end_users_path %></div>
+    <div><%= link_to "退会", publics_end_users_withdrow_path %></div>
+  
