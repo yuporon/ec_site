@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'end_users/index'
+  get 'end_users/show'
+  get 'end_users/edit'
+  get 'end_users/update'
   devise_for :end_users, 
-    path: 'publics/end_users', 
+    path: 'public/end_users', 
     controllers: {
         sessions: 'devise/end_users/sessions',
         passwords: 'devise/end_users/passwords',
@@ -8,20 +12,22 @@ Rails.application.routes.draw do
     }
 
   devise_for :admins, 
+    path: "admin",
     controllers: {
         sessions: 'devise/admins/sessions',
     }
   
-  namespace :admins do
+  namespace :admin do
 
     resources :items
+    resources :end_users, :only => [:index, :show, :edit, :update]
 
   end
-  namespace :publics do
+  namespace :public do
 
-    resource :end_users, :only => [:show, :edit, :update]
-    get "end_users/withdrow"      => "publics/end_users#withdrow"
-    patch "end_users/switch"      => "publics/end_users#switch"
+    resource :end_user, :only => [:show, :edit, :update]
+    get "end_user/withdrow"      => "end_users#withdrow"
+    patch "end_user/switch"      => "end_users#switch"
 
   end
 end

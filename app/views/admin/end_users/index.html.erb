@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="col-xs-3">
+      <h3>end_user</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>last_name</th>
+            <th>first_name</th>
+            <th>email</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @end_user.each do |end_user| %>
+            <tr>
+                <td>
+                    <%= end_user.id %>
+                </td>
+                <td>
+                    <%= end_user.last_name %>
+                </td>
+                <td>
+                    <%= end_user.first_name %>
+                </td>
+                <td>
+                    <%= end_user.email %>
+                </td>
+                <td> 
+                    <% unless end_user.is_unsubscribed %>
+                        <div></div>
+                    <% else %>
+                        <div>退会</div>
+                    <% end %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody> 
+      </table>
+    </div>
+  </div>
+</div>
+
