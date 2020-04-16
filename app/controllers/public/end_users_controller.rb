@@ -23,9 +23,9 @@ class Public::EndUsersController < ApplicationController
       @end_user =  current_end_user
     end
     def switch
-      end_user = current_end_user
+      @end_user = current_end_user
         #is_deletedカラムにフラグを立てる(defaultはfalse)
-        end_user.update(is_unsubscribed: true)
+        @end_user.update(is_unsubscribed: true)
         #ログアウトさせる
         reset_session
         redirect_to new_end_user_session_path
