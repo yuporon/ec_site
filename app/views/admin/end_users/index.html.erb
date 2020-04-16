@@ -1,14 +1,18 @@
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
-    <div class="col-xs-3">
-      <h3>end_user</h3>
+    <div class="col-xs-6">
+      <h3>会員一覧画面</h3>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>last_name</th>
-            <th>first_name</th>
+            <th>会員ID</th>
+            <th>name</th>
             <th>email</th>
-            <th>Opinion</th>
+            <th>ステータス</th>
           </tr>
         </thead>
         <tbody>
@@ -19,8 +23,6 @@
                 </td>
                 <td>
                     <%= end_user.last_name %>
-                </td>
-                <td>
                     <%= end_user.first_name %>
                 </td>
                 <td>
@@ -28,9 +30,9 @@
                 </td>
                 <td> 
                     <% unless end_user.is_unsubscribed %>
-                        <div></div>
+                        <div>有効</div>
                     <% else %>
-                        <div>退会</div>
+                        <div>退会済み</div>
                     <% end %>
                 </td>
             </tr>
