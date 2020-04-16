@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Editing end_user</h1>
+      <% if @end_user.errors.any? %>
+        <%= @end_user.errors.count %>件のerrorが発生しました
+        <% @end_user.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      <%= form_for(@end_user,url: public_end_user_path(@end_user),) do |f| %>
+        <div class="field row">
+          <h4>email</h4>
+          <%= f.text_field :email, class: "col-xs-12 end_user_email"%>
+        </div>
+        <div class="actions row">
+          <%= f.submit "Update" ,class: "btn btn-primary col-xs-12" %>
+          <br>
+        </div>
+      <% end %>
+      　<%= link_to 'Show', public_end_user_path %>
+      　<%= link_to 'Back', public_end_user_path  %>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+</div>
+

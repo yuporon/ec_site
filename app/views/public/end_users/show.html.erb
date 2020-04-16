@@ -1,0 +1,16 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>User info</h1>
+    <div>名:<%= @end_user.first_name%></div>
+    <div>姓:<%= @end_user.last_name%></div>
+    <div>メールアドレス:<%= @end_user.email %></div>
+    <br>
+    <div><%= link_to "編集", edit_public_end_user_path %></div>
+    <% if end_user_signed_in? && @end_user.id == current_end_user.id %>
+    <%= link_to "退会", public_end_user_switch_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+    <% end %>
+
+　
