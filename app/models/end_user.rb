@@ -6,7 +6,7 @@ class EndUser < ApplicationRecord
 
   has_many :cart_items
   has_many :orders
-  has_many :address
+  has_many :addresses
   
   acts_as_paranoid column: :is_unsubscribed,　column_type: 'boolean'
 

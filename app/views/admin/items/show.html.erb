@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+        <h3>商品　詳細画面</h3>
+        <div class="image">
+              <%= attachment_image_tag @item, :image %>
+        </div>
+        <table class='table'>
+            <tr>
+                <th>name</th>
+                <th><%= @item.name %></th>
+            </tr>
+            <tr>
+                <th>introduction</th>
+                <th><%= @item.description %></th>
+            </tr>
+            <tr>
+                <th>ジャンル</th>
+                <th><%= @item.genre.name %></th>
+            </tr>
+            <tr>
+                <th>税込価格</th>
+                <th><%= @item.price_nontax %></th>
+            </tr>
+            <tr>
+                <th>販売ステータス</th>
+                <th><%= @item.sale_status %></th>
+            </tr>
+        </table>
+        <div class='row'>
+            <%= link_to 'edit',edit_admin_item_path,class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+        </div>
+    </div>
+  </div>
+</div>

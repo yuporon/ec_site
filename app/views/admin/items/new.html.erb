@@ -4,7 +4,21 @@
 <br>
 <br>
 <%= form_for @item, url: admin_items_path do |f| %>
-    <div class="col-md-6">
+    <div class="col-md-2"></div>
+     <% if @item.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= @item.errors.count %>件のエラーが発生しました。</h2>
+            <ul>
+            <% @item.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="col-md-4">
+        <%= f.attachment_field :image %>
+    </div>
+    <div class="col-md-4">
         <div class="field row">
             <%= f.label :商品名　,class: 'col-md-3' %>
             <%= f.text_field :name, class: 'col-md-9' %>

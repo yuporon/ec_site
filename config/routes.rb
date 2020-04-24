@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :items
     resources :end_users, :only => [:index, :show, :edit, :update]
+    resources :genres, :only => [:index, :create, :edit, :update]
 
   end
   namespace :public do
