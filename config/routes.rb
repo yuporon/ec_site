@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'end_users/index'
-  get 'end_users/show'
-  get 'end_users/edit'
-  get 'end_users/update'
   devise_for :end_users, 
     path: 'public/end_users', 
     controllers: {
@@ -21,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :items
     resources :end_users, :only => [:index, :show, :edit, :update]
+    resources :genres, :only => [:index, :create, :edit, :update]
 
   end
   namespace :public do
@@ -28,6 +25,8 @@ Rails.application.routes.draw do
     resource :end_user, :only => [:show, :edit, :update]
     get "end_user/withdrow"      => "end_users#withdrow"
     patch "end_user/switch"      => "end_users#switch"
-
+  
+    resources :items, :only => [:index, :show]
+    resources :cart_items, :only => [:index, :update, :destroy, :destroy_all, :create]
   end
 end
