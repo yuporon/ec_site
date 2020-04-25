@@ -20,6 +20,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "受注一覧" ,admin_items_path %></li>
               <li><%= link_to "商品登録",new_admin_item_path %></li>
+              <li><%= link_to "ジャンル管理",admin_genres_path %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             </ul>
           </nav>
@@ -29,7 +30,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "マイページ", public_end_user_path %></li>
               <li><%= link_to "カート一覧", public_cart_items_path %></li>
-              <li><%= link_to "商品一覧", admin_items_path %></li>
+              <li><%= link_to "商品一覧", public_items_path %></li>
               <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             </ul>
           </nav>
