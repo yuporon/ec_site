@@ -1,2 +1,60 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <%= link_to "カートを空にする",public_destroy_all_cart_items_path, method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn-sm btn-danger" %>
+    <div class="col-xs-9">
+        <h3>ショッピングカート</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価(税込)</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @sum = 0 %>
+                <% @cart_items.each do |cart_item| %>
+                    <tr>
+                        <td>
+                            <%= attachment_image_tag cart_item.item, :image , size: "60x60"%> 
+                            <%= cart_item.item.name %>
+                        </td>
+                        <td>
+                            <%= cart_item.item.price_nontax %>
+                        </td>
+                        <td>
+                            <%= form_for(cart_item, url: public_cart_item_path(cart_item.id)) do |f| %>
+                                <%= f.number_field :amount %>
+                                <%= f.submit "変更する" , class: "btn  btn-primary"%>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= "¥#{(cart_item.amount * cart_item.item.price_nontax).to_i}" %>
+                        </td>
+                        <td>
+                            <%= link_to "削除する",public_cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn-sm btn-danger" %>
+                        </td>
+                    </tr>
+                    <% @sum += (cart_item.item.price_nontax * cart_item.amount).to_i %>
+                <% end %>
+            </tbody>
+        </table>
+        <%= link_to "買物を続ける",public_end_user_path, class:"btn bg-primary" %>
+        <div class="row table">
+            <div class="col-md-9"></div>
+            <tr class="col-md-3">
+                <td>合計金額</td>
+                <td><%= "¥#{@sum}"%></td>
+            </tr>
+        </div>
+        <%= link_to "情報入力に進む",public_end_user_path, class:"btn bg-primary" %>
+    </div>
+  </div>
+</div>

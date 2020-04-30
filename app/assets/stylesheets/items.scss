@@ -1,3 +1,21 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item_name{
+    font-size: 30px;
+    height: 50px;
+}
+
+.item_description{
+    font-size: 20px;
+    height: 160px;
+}
+.item_price_nontax{
+    font-size: 30px;
+    height: 50px;
+
+}
+.nontax{
+    font-size: 15px;
+}
