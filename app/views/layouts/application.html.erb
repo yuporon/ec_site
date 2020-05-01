@@ -29,8 +29,8 @@
           <nav>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "マイページ", public_end_user_path %></li>
-              <li><%= link_to "カート一覧", public_cart_items_path %></li>
               <li><%= link_to "商品一覧", public_items_path %></li>
+              <li><%= link_to "カート内商品一覧", public_cart_items_path %></li>
               <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
             </ul>
           </nav>
