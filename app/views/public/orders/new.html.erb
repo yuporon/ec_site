@@ -25,8 +25,8 @@
                         <%= f.label :支払い方法 %>
                     </div>
                     <div class="col-md-6">
-                        <label><%= f.radio_button :payment_method, :credit_card %> クレジットカード</label>
-                        <label><%= f.radio_button :payment_method, :bank_transfer %> 銀行振込</label>
+                        <label><%= f.radio_button :payment_method, :credit_card,:checked => true %> クレジットカード</label>
+                        <label><%= f.radio_button :payment_method, :bank_transfer%> 銀行振込</label>
                     </div>
                 </div>
                 <br>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-9">
                         <label>
-                            <%= f.radio_button :address_option,0%>
+                            <%= f.radio_button :address_option,0,:checked => true %>
                             ご自身の住所<br>
                             <%= current_end_user.postal_code %><br>
                             <%= current_end_user.address %><br>

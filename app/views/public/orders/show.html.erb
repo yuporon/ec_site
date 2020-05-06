@@ -26,7 +26,7 @@
                 <tr>
                     <th>支払方法</th>
                     <td>
-                        <%= @order.payment_method %>
+                        <%= @order.payment_method_i18n %>
                     </td>
                 <tr>
                     <th>ステータス</th>
@@ -72,6 +72,7 @@
                         <td><%= order_item.item.name%></td>
                         <td>
                             <%= order_item.current_value%>
+                        </td>
                         <td>
                             <%= order_item.order_quanitity %>
                         </td>

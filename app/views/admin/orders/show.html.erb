@@ -19,7 +19,7 @@
         <br>
         <div class="field row">
             <div class="col-md-3"><h4>支払い方法</h4></div>
-            <div class="col-md-6"> <%= @order.payment_method %></div>
+            <div class="col-md-6"> <%= @order.payment_method_i18n %></div>
         </div>
         <br>
         <div class="field row">
@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                     <% @order.order_items.each do |order_item| %>
-                        <%= form_for order_item, url: admin_order_path(@order) do |f| %>
+                        <%= form_for order_item, url: admin_order_items_path(order_item) do |f| %>
                             <tr>
                                 <td><%= order_item.item.name%></td>
                                 <td>
