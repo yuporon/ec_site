@@ -13,7 +13,7 @@ class Admin::OrdersController < ApplicationController
       order.update(order_status_params)
       if order.status == 'confirmation_pay'
           order.order_items.each do |order_item|
-              order_item.status = 1
+              order_item.is_production = 1
               order_item.save
           end
       end

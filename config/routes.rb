@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :end_users, :only => [:index, :show, :edit, :update]
     resources :genres, :only => [:index, :create, :edit, :update]
     resources :orders, :only => [:index, :show, :update]
-    resources :order_items
+    resources :order_items,  :only => [:update]
 
   end
   namespace :public do

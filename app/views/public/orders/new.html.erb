@@ -46,7 +46,7 @@
                         <label>
                             <%= f.radio_button :address_option,1 %>
                             登録済み住所から選択<br>
-                            <%= f.collection_select :address_collection, @addresses, :id, :address_name,include_blank: "-- 選択して下さい --" %>
+                             <%= f.collection_select :address_collection, @addresses, :id, :view_address_detail, include_blank: "-- 選択して下さい --" %>
                         </label>
                         <br>
                         <label>

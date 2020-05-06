@@ -14,7 +14,6 @@
                     <th>単価(税込)</th>
                     <th>数量</th>
                     <th>小計</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,16 +27,10 @@
                             <%= cart_item.item.price_nontax %>
                         </td>
                         <td>
-                            <%= form_for(cart_item, url: public_cart_item_path(cart_item.id)) do |f| %>
-                                <%= f.number_field :amount, min:1, step:1, rows:'5',placeholder: "個数選択"  %>
-                                <%= f.submit "変更する" , class: "btn  btn-primary"%>
-                            <% end %>
+                            <%= cart_item.amount %>
                         </td>
                         <td>
                             <%= "¥#{(cart_item.amount * cart_item.item.price_nontax).to_i}" %>
-                        </td>
-                        <td>
-                            <%= link_to "削除する",public_cart_item_path(cart_item), method: :delete, "data-confirm" => "本当に削除しますか？",class:"btn-sm btn-danger" %>
                         </td>
                     </tr>
                     <% @order.total_payment += (cart_item.item.price_nontax * cart_item.amount).to_i %>
@@ -62,8 +55,9 @@
             <h3>支払方法</h3>
             <%= @order.payment_method_i18n%>
             <h3>お届け先</h3>
-            <%= @order.address %>
+            <%= "〒#{@order.postal_code+"　"+@order.address+"　"+@order.address_name}"  %>
         </div>
+        <br>
         <%= form_for @order,url: public_orders_path,method: :post do |f| %>
             <div class="actions order_new_field">
                 <%= f.hidden_field :postage, :value => @order.postage %>

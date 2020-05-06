@@ -26,7 +26,7 @@
             <div class="col-md-3"> <h4>注文ステータス</h4></div>
             <div class="col-md-6">
                 <%= form_for @order, url: admin_order_path(@order) do |f|%>
-                    <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"),k] }, {class: 'col-md-9' } %>
+                    <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"),k] }%>
                     <%= f.submit '更新', class: 'btn btn-primary' %>
                 <% end %>
             </div>
@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                     <% @order.order_items.each do |order_item| %>
-                        <%= form_for order_item, url: admin_order_items_path(order_item) do |f| %>
+                        <%= form_for order_item, url: admin_order_item_path(order_item) do |f| %>
                             <tr>
                                 <td><%= order_item.item.name%></td>
                                 <td>
