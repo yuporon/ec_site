@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  root 'public/items#top'
+
   devise_for :end_users, 
     path: 'public/end_users', 
     controllers: {

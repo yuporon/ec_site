@@ -1,6 +1,9 @@
 class Public::ItemsController < ApplicationController
+  def top
+  end
+
   def index
-    @items = Item.all
+    @items = Item.where(sale_status: 1)
   end
 
   def show
