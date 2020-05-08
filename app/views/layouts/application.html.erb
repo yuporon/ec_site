@@ -13,38 +13,34 @@
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <nav class="nav navbar-nav navbar-left"></nav>
-        <% if admin_signed_in? %>
-          <nav class="text-muted"><span><strong>管理者</strong></span></nav>
+        <nav class="nav navbar-nav navbar-left">
+          <span>EcSite</span>
+        </nav>
           <nav>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "商品一覧" ,admin_items_path %></li>
-              <li><%= link_to "商品登録",new_admin_item_path %></li>
-              <li><%= link_to "注文履歴一覧",admin_orders_path %></li>
-              <li><%= link_to "ジャンル管理",admin_genres_path %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+              <% if admin_signed_in? %>
+                <li><%= link_to "商品一覧" ,admin_items_path %></li>
+                <li><%= link_to "商品登録",new_admin_item_path %></li>
+                <li><%= link_to "注文履歴一覧",admin_orders_path %></li>
+                <li><%= link_to "ジャンル管理",admin_genres_path %></li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+                <div class="col-md-5"></div>
+                <%= form_tag(admin_items_path,:method => 'get') do %>
+                  <%= text_field_tag :search %>
+                  <%= submit_tag 'Search', :name => nil %>
+                <% end %>
+              <% elsif end_user_signed_in? %>
+                <li><%= link_to "マイページ", public_end_user_path %></li>
+                <li><%= link_to "商品一覧", public_items_path %></li>
+                <li><%= link_to "カート内商品一覧", public_cart_items_path %></li>
+                <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
+              <% else %>
+                <li><%= link_to "新規登録", new_end_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_end_user_session_path %></li>
+                <li><%= link_to "管理者ログイン", new_admin_session_path %></li>
+              <% end %>
             </ul>
           </nav>
-        <% elsif end_user_signed_in? %>
-          <nav class="text-muted"><span><strong>ユーザー</strong></span></nav>
-          <nav>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "マイページ", public_end_user_path %></li>
-              <li><%= link_to "商品一覧", public_items_path %></li>
-              <li><%= link_to "カート内商品一覧", public_cart_items_path %></li>
-              <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out logout" %></li>
-            </ul>
-          </nav>
-        <% else %>
-          <nav class="text-muted"><span><strong>ゲストユーザー</strong></span></nav>
-          <nav>
-            <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "新規登録", new_end_user_registration_path %></li>
-              <li><%= link_to "ログイン", new_end_user_session_path %></li>
-              <li><%= link_to "管理者ログイン", new_admin_session_path %></li>
-            </ul>
-          </nav>
-        <% end %>
       </div>
     </header>
     <main >

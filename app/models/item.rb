@@ -5,4 +5,11 @@ class Item < ApplicationRecord
     attachment :image
     # validates :image, presence: true
     enum sale_status: { "-- 選択してください --": 0, 販売中: 1, 販売停止中: 2}
+    def self.search(search)
+        if search
+          Item.where(['name LIKE ?', "%#{search}%"])
+        else
+          Item.all
+        end
+      end
 end
