@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root 'public/items#top'
+
   devise_for :end_users, 
     path: 'public/end_users', 
     controllers: {
@@ -18,6 +21,8 @@ Rails.application.routes.draw do
     resources :items
     resources :end_users, :only => [:index, :show, :edit, :update]
     resources :genres, :only => [:index, :create, :edit, :update]
+    resources :orders, :only => [:index, :show, :update]
+    resources :order_items,  :only => [:update]
 
   end
   namespace :public do
@@ -29,5 +34,12 @@ Rails.application.routes.draw do
     resources :items, :only => [:index, :show]
     resources :cart_items, :only => [:index, :update, :destroy, :destroy_all, :create]
     delete "/cart_items" => "cart_items#destroy_all", as: "destroy_all_cart_items"
+    resources :orders, :only => [:new, :create, :index, :show] do
+      collection do
+        post :verification
+        get :completed
+      end
+    end
+    resources :addresses
   end
 end
