@@ -1,24 +1,23 @@
-# README
+# ECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+### 目的
+- Railsによる開発
+- ECサイト構築
+- Bootstrapを利用
+- 顧客と管理者の利用を想定した実装
 
-* Ruby version
+### 内容
+- 認証機能・退会機能
+- 管理者機能（商品追加・ジャンル追加・製作ステータ管理）
+- 顧客機能（カート機能・注文状況閲覧）
+- 検索機能
+- 非同期（Ajax)によるコメント・いいね機能
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 環境
+- MacOS BigSur 11.2.3
+- Ruby 2.5.7
+- Ruby on Rails 5.2.3
+- SQLite 3.28.0
+- Vagrant
